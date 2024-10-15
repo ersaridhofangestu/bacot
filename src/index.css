@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    background-color: #fffdf7;
+  }
+
+  .button_buy {
+    @apply w-28 h-9 m-2 text-black border-none rounded-lg text-lg font-bold cursor-pointer relative overflow-hidden bg-yellow;
+    position: relative;
+    z-index: 1;
+  }
+
+  .button_buy::after {
+    content: "";
+    @apply absolute z-0 left-[-20%] right-[-20%] top-0 bottom-0 bg-black text-yellow transform skew-x-[-45deg] scale-x-0 transition-all duration-500;
+    z-index: -1;
+  }
+
+  .button_buy:hover::after {
+    @apply scale-x-100;
+  }
+
+  .button_buy:hover {
+    @apply text-yellow;
+  }
+}
