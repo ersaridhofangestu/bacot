@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  * {
+  body {
     background-color: #fffdf7;
   }
 
+  /* button  */
   .button_buy {
-    @apply w-28 h-9 m-2 text-black border-none rounded-lg text-lg font-bold cursor-pointer relative overflow-hidden bg-yellow;
+    @apply w-28 h-9 m-2 text-black border-none rounded-lg text-lg font-bold cursor-pointer relative overflow-hidden bg-yellow delay-100 ease-in-out;
     position: relative;
     z-index: 1;
   }
@@ -24,6 +25,109 @@
   }
 
   .button_buy:hover {
-    @apply text-yellow;
+    @apply text-yellow delay-100 ease-in-out;
+  }
+
+  /* navsm */
+  /* From Uiverse.io by prakashdc */
+  .hamburger {
+    cursor: pointer;
+  }
+
+  .hamburger input {
+    display: none;
+  }
+
+  .hamburger svg {
+    height: 3em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition:
+      stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line-top-bottom {
+    stroke-dasharray: 12 63;
+  }
+
+  .hamburger input:checked + svg {
+    transform: rotate(-45deg);
+  }
+
+  .hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
+
+  /* From Uiverse.io by Pradeepsaranbishnoi */
+  .social-links,
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social-btn {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    font-family: "Titillium Web", sans-serif;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    margin: 5px;
+    transition: 0.3s;
+    justify-content: center;
+  }
+
+  .social-btn svg {
+    height: 24px;
+    width: 24px;
+  }
+
+  .social-btn span {
+    width: 0px;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: center;
+    margin-left: 5px;
+  }
+
+  .social-btn:hover {
+    width: 150px;
+    border-radius: 5px;
+  }
+
+  .social-btn:hover span {
+    padding: 2px;
+    width: 80px;
+  }
+
+  #twitter svg {
+    fill: #1da1f2;
+  }
+
+  #linkedin svg {
+    fill: #0e76a8;
+  }
+
+  #github {
+    fill: #333;
+  }
+}
+
+@layer utilities {
+  .text-stroke-2 {
+    -webkit-text-stroke: 2px #ffbf00;
+    /* text-stroke: 5px; */
   }
 }

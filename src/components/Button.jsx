@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 
-const Button = ({ children, ...props }) => {
+const Button = ({ children, className, ...props }) => {
     return (
-        <button {...props} className='button_buy'>
+        <button {...props} className={`button_buy ${className}`}>
             {children}
         </button>
     )
@@ -10,6 +10,7 @@ const Button = ({ children, ...props }) => {
 
 Button.propTypes = {
     children: PropTypes.node.isRequired,
+    className: string
 }
 
 export default Button
