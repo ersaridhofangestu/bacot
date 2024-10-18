@@ -1,4 +1,5 @@
-.Link {
+.Link,
+.Active {
   font-size: 18px;
   cursor: pointer;
   position: relative;
@@ -10,17 +11,15 @@
   transition-property: color;
 }
 
-.Link:focus,
-.Link:hover {
-}
-
 .Link:focus:after,
+.Active,
 .Link:hover:after {
   width: 100%;
   left: 0%;
 }
 
-.Link:after {
+.Link:after,
+.Active {
   content: "";
   pointer-events: none;
   bottom: -2px;
