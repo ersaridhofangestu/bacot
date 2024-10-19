@@ -123,6 +123,171 @@
   #github {
     fill: #333;
   }
+
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card .content {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .content::before {
+    opacity: 0;
+    transition: opacity 300ms;
+    content: " ";
+    display: block;
+    background: #fff5;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    filter: blur(50px);
+  }
+
+  .card:hover .content::before {
+    opacity: 1;
+  }
+
+  .card::before {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    display: block;
+    width: 250px;
+    height: 500px;
+    transform: rotate(0deg) translateY(50%);
+    background: linear-gradient(90deg, #ffbf00, transparent);
+    transition: opacity 300ms;
+    animation: rotation_9018 3000ms infinite linear;
+    animation-play-state: paused;
+  }
+  .card::after {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    display: block;
+    width: 250px;
+    height: 500px;
+    transform: rotate(0deg) translateY(-50%);
+    background: linear-gradient(90deg, transparent, #212121);
+    transition: opacity 300ms;
+    animation: rotation_9019 3000ms infinite linear;
+    animation-play-state: paused;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+  }
+  .card:hover::after {
+    opacity: 1;
+    animation-play-state: running;
+  }
+
+  .card:hover .glass {
+    opacity: 0;
+  }
+
+  .glass {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 190px;
+    height: 254px;
+    background-color: white;
+    backdrop-filter: blur(50px);
+    z-index: 1;
+    transition-duration: 0.5s;
+  }
+
+  @keyframes rotation_9018 {
+    0% {
+      transform: rotate(0deg) translateY(50%);
+    }
+
+    100% {
+      transform: rotate(360deg) translateY(50%);
+    }
+  }
+  @keyframes rotation_9019 {
+    0% {
+      transform: rotate(0deg) translateY(-50%);
+    }
+
+    100% {
+      transform: rotate(360deg) translateY(-50%);
+    }
+  }
+
+  /* From Uiverse.io by LeonKohli */
+  .uv-checkbox-wrapper {
+    display: inline-block;
+  }
+
+  .uv-checkbox {
+    display: none;
+  }
+
+  .uv-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .uv-checkbox-icon {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: 2px solid #ccc;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transition:
+      border-color 0.3s ease,
+      border-radius 0.3s ease;
+  }
+
+  .uv-checkmark {
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    width: 1.6em;
+    height: 1.6em;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    transition: stroke-dashoffset 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+
+  .uv-checkbox-text {
+    margin-left: 0.5em;
+    transition: color 0.3s ease;
+  }
+
+  .uv-checkbox:checked + .uv-checkbox-label .uv-checkbox-icon {
+    border-color: #6c5ce7;
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    background-color: #6c5ce7;
+  }
+
+  .uv-checkbox:checked + .uv-checkbox-label .uv-checkmark {
+    stroke-dashoffset: 0;
+  }
+
+  .uv-checkbox:checked + .uv-checkbox-label .uv-checkbox-text {
+    color: #6c5ce7;
+  }
 }
 
 @layer utilities {

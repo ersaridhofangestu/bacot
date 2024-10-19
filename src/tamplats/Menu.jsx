@@ -1,44 +1,68 @@
-import TagLine from "../components/TagLine"
-import original from "../assets/menu/original.jpg"
-import { MdOutlineStarPurple500 } from "react-icons/md";
-import { useState } from "react";
-import { FaPlus, FaMinus } from "react-icons/fa6";
+// components
+import TagLine from "../components/TagLine";
+import CardMenu from "../components/CardMenu";
+
+// images
+import original from "../assets/menu/original.jpg";
+import matcha from "../assets/menu/matcha.jpg";
+import strawberry from "../assets/menu/strawberry.jpg";
+
+const menus = [
+  {
+    image: original,
+    name: "Original Pisang Coklat",
+    count: 1,
+    price: 10000,
+    desc: "Selain cinta kita yang original, ada nih rasa original pisang coklat yang siap menggoda lidahmu! Manisnya bikin hari-hari jadi lebih cerah!",
+  },
+  {
+    image: matcha,
+    name: "Pisang dan Matcha",
+    count: 1,
+    price: 10000,
+    desc: "Kalau kamu suka kesegaran, ada nih pisang matcha! Selain kehadiranmu yang menyegarkan, rasanya bisa bikin semangatmu bangkit kembali!",
+  },
+  {
+    image: strawberry,
+    name: "Pisang dan Strawberry",
+    count: 1,
+    price: 10000,
+    desc: "Selain senyummu yang manis, ada nih pisang stroberi yang bisa bikin harimu lebih ceria! Rasanya yang pas, bikin siapa pun ingin mencobanya!",
+  },
+  {
+    image: null,
+    name: "Pisang dan Coklat Oreo",
+    count: 1,
+    price: 10000,
+    desc: "Kalau kamu suka coklat, kamu harus coba pisang coklat Oreo ini! Seperti kita, perpaduan yang sempurna dan selalu membuatmu terpesona!",
+  },
+  {
+    image: null,
+    name: "Pisang dan Keju",
+    count: 1,
+    price: 10000,
+    desc: "Selain kasih sayang kita yang creamy, ada juga pisang keju ini! Rasanya yang lezat bikin kamu pengen terus mencicipi setiap gigitannya!",
+  },
+];
 
 const Menu = () => {
-    const [count, setCount] = useState(0)
-    return (
-        <main className="px-[1rem] pb-[100rem]">
-            <TagLine teg="our menu" desc="Hidangan Spesial, Seperti Kamu" />
-            <div className="grid grid-cols-4">
-                <div className="rounded-3xl overflow-hidden border flex flex-col gap-5">
-                    <div className="relative w-full h-48">
-                        <img src={original} alt="" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="p-5 flex flex-col gap-2">
-                        <span className="flex items-center gap-1">
-                            <MdOutlineStarPurple500 size={25} className="fill-yellow" />
-                            <MdOutlineStarPurple500 size={25} className="fill-yellow" />
-                            <MdOutlineStarPurple500 size={25} className="fill-yellow" />
-                            <MdOutlineStarPurple500 size={25} className="fill-yellow" />
-                            <MdOutlineStarPurple500 size={25} className="fill-yellow" />
-                        </span>
-                        <h2 className="capitalize font-semibold">Original Pisang Coklat</h2>
-                        <small className="px-3">Selain cinta kita yang original, ada nih rasa original pisang coklat yang siap menggoda lidahmu! Manisnya bikin hari-hari jadi lebih cerah!</small>
-                        <div className="flex justify-between">
-                            <div className="flex items-center justify-around border w-[10rem] h-[2rem] rounded-full overflow-hidden">
-                                <button className="h-full w-full flex justify-center items-center group-hover/plus:bg-yellow group/plus:">
-                                    <FaPlus className="group-hover/plus:scale-110" />
-                                </button>
-                                <p className="border-x px-2">{count}</p>
-                                <button className="h-full w-full"><FaMinus /></button>
-                            </div>
-                            Rp. 20.0000\-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    )
-}
+  return (
+    <main className="px-[1rem] pb-[100rem]">
+      <TagLine teg="our menu" desc="Hidangan Spesial, Seperti Kamu" />
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {menus.map((menu, index) => (
+          <div key={index + 1}>
+            <CardMenu
+              price={menu.price}
+              name={menu.name}
+              desc={menu.desc}
+              img={menu.image}
+            />
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+};
 
-export default Menu
+export default Menu;
