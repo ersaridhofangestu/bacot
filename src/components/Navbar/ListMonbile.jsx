@@ -1,22 +1,17 @@
 import PropTypes from "prop-types";
 import Button from "../Button";
 // icons
-import {
-  AiOutlineHome,
-  AiOutlinePhone,
-  AiOutlineInfoCircle,
-} from "react-icons/ai";
+import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsTools } from "react-icons/bs";
 import { Link } from "react-scroll";
 
-const ListMonbile = ({ active }) => {
+const ListMonbile = ({ active, func, setActive }) => {
   const lists = [
     { icon: <AiOutlineHome size={26} />, title: "home", to: "home" },
     { icon: <MdOutlineRestaurantMenu size={26} />, title: "menu", to: "menu" },
     { icon: <BsTools size={26} />, title: "service", to: "service" },
     { icon: <AiOutlineInfoCircle size={26} />, title: "about us", to: "about" },
-    { icon: <AiOutlinePhone size={26} />, title: "contacts", to: "contacts" },
   ];
   return (
     <div
@@ -47,6 +42,7 @@ const ListMonbile = ({ active }) => {
                 ignoreCancelEvents={false}
                 spyThrottle={500}
                 className="hover:text-yellow transition-colors duration-500 ease-in-out delay-100 Link flex items-center gap-5"
+                onClick={() => setActive(!active)}
               >
                 {list.icon} {list.title}
               </Link>
@@ -56,7 +52,7 @@ const ListMonbile = ({ active }) => {
           <p className="font-thin text-black text-center">
             Maniskan harimu! Yuk, pesan dessert favoritmu sekarang!
           </p>
-          <Button>buy</Button>
+          <Button onClick={() => func(true)}>buy</Button>
         </div>
       </div>
     </div>
@@ -65,6 +61,8 @@ const ListMonbile = ({ active }) => {
 
 ListMonbile.propTypes = {
   active: PropTypes.bool.isRequired,
+  func: PropTypes.func,
+  setActive: PropTypes.func,
 };
 
 export default ListMonbile;

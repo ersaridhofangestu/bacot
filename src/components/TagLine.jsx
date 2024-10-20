@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-const TagLine = ({ teg, desc }) => {
+const TagLine = ({ teg, desc, className = "text-center" }) => {
   return (
-    <div className="flex flex-col items-center justify-center mb-10">
-      <small className="text-yellow  md:text-xl font-semibold uppercase">
+    <div className={`mb-10 ${className}`}>
+      <small className="text-yellow  text-start  md:text-xl font-semibold uppercase">
         {teg}
       </small>
       <h2 className="text-2xl font-bold md:text-4xl lg:text-5xl capitalize text-center">
@@ -16,6 +16,7 @@ const TagLine = ({ teg, desc }) => {
 TagLine.propTypes = {
   teg: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default TagLine;

@@ -1,7 +1,13 @@
-const Hamburger = ({ ...props }) => {
+import PropTypes from "prop-types";
+
+const Hamburger = ({ func, value }) => {
   return (
     <label className="hamburger md:hidden relative bottom-0">
-      <input type="checkbox" {...props} />
+      <input
+        type="checkbox"
+        checked={value}
+        onChange={(e) => func(e.target.checked)}
+      />
       <svg viewBox="0 0 32 32">
         <path
           className="line stroke-yellow line-top-bottom"
@@ -11,6 +17,11 @@ const Hamburger = ({ ...props }) => {
       </svg>
     </label>
   );
+};
+
+Hamburger.propTypes = {
+  func: PropTypes.func.isRequired,
+  value: PropTypes.bool.isRequired,
 };
 
 export default Hamburger;

@@ -8,44 +8,50 @@ import "./navbar.css";
 import { GlobalStateContext } from "../../GlobalStateContext";
 
 const Navbar = () => {
-  const {
-    setCheckout,
-    checkout,
-    totalCountOrder,
-    activeNavar,
-    setActiveNavbar,
-  } = useContext(GlobalStateContext);
-  console.log(checkout);
+  const { setCheckout, totalCountOrder, activeNavar, setActiveNavbar } =
+    useContext(GlobalStateContext);
+
+  const handleMenuToggle = (isActive) => setActiveNavbar(isActive);
+  const handleCloseMenu = () => setActiveNavbar(false);
+
   return (
-    <nav className="flex justify-between border-b-2  border-yellow py-10 bg-white px-[1rem] w-screen z-50 fixed left-0 h-10">
+    <nav className="flex justify-between border-b-2 border-yellow py-10 bg-white px-[1rem] w-screen z-50 fixed left-0 h-10">
       <div className="flex items-center">
-        <img className="w-16 md:-ml-3" src="/src/assets/logo.png" alt="" />
+        <img className="w-16 md:-ml-3" src="/src/assets/logo.png" alt="Logo" />
         <h1 className="text-4xl md:text-5xl font-bold text-yellow -ml-2">
           Bacot
         </h1>
       </div>
+
       <ListDekstop />
+
       <div className="flex items-center justify-between gap-2 md:gap-5">
         <div className="relative">
           <BiShoppingBag className="size-9" />
           {totalCountOrder > 0 && (
             <p
-              className={
-                "absolute left-3 top-3 bg-yellow text-xl font-semibold w-8 h-8 flex justify-center items-center rounded-full scale-75"
-              }
+              className="absolute left-3 top-3 bg-yellow text-xl font-semibold w-8 h-8 
+              flex justify-center items-center rounded-full scale-75"
             >
               {totalCountOrder}
             </p>
           )}
         </div>
+
         <Button
-          className={`hidden md:block ${totalCountOrder < 0 && "disabled:cursor-none"}`}
+          className={`hidden md:block ${totalCountOrder <= 0 && "disabled:cursor-none"}`}
           onClick={() => setCheckout(true)}
         >
-          buy
+          Buy
         </Button>
-        <Hamburger onChange={() => setActiveNavbar(!activeNavar)} />
-        <ListMonbile active={activeNavar} />
+
+        <Hamburger func={handleMenuToggle} value={activeNavar} />
+
+        <ListMonbile
+          active={activeNavar}
+          setActive={handleCloseMenu}
+          func={() => setCheckout(true)}
+        />
       </div>
     </nav>
   );

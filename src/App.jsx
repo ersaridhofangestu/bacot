@@ -9,16 +9,22 @@ import CheckOut from "./components/CheckOut";
 import Headers from "./tamplats/Headers";
 import Services from "./tamplats/Services";
 import Menu from "./tamplats/Menu";
-import { GlobalStateContext, GlobalStateProvider } from "./GlobalStateContext";
-import { useContext, useEffect } from "react";
+import { GlobalStateContext } from "./GlobalStateContext";
+import { useContext } from "react";
+import Testimonial from "./tamplats/Testimonial";
+import About from "./tamplats/About";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { checkout } = useContext(GlobalStateContext);
-  useEffect(() => {}, [checkout]);
   return (
-    <GlobalStateProvider>
-      {checkout == false ? (
-        <div className="flex flex-col gap-36">
+    <>
+      {checkout ? (
+        <div className={`relative`}>
+          <CheckOut />
+        </div>
+      ) : (
+        <div className={` flex flex-col gap-36`}>
           <Navbar />
           <Element name="home">
             <Headers />
@@ -26,14 +32,19 @@ const App = () => {
           <Element name="service">
             <Services />
           </Element>
-          <Menu />
-        </div>
-      ) : (
-        <div className="absolute">
-          <CheckOut />
+          <Element name="menu">
+            <Menu />
+          </Element>
+          <Element name="">
+            <Testimonial />
+          </Element>
+          <Element name="about">
+            <About />
+          </Element>
+          <Footer />
         </div>
       )}
-    </GlobalStateProvider>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import CardMenu from "../components/CardMenu";
 import original from "../assets/menu/original.jpg";
 import matcha from "../assets/menu/matcha.jpg";
 import strawberry from "../assets/menu/strawberry.jpg";
+import oreo from "../assets/menu/oreo.jpg";
 
 const menus = [
   {
@@ -30,24 +31,24 @@ const menus = [
     desc: "Selain senyummu yang manis, ada nih pisang stroberi yang bisa bikin harimu lebih ceria! Rasanya yang pas, bikin siapa pun ingin mencobanya!",
   },
   {
-    image: null,
+    image: oreo,
     name: "Pisang dan Coklat Oreo",
     count: 1,
     price: 10000,
     desc: "Kalau kamu suka coklat, kamu harus coba pisang coklat Oreo ini! Seperti kita, perpaduan yang sempurna dan selalu membuatmu terpesona!",
   },
-  {
-    image: null,
-    name: "Pisang dan Keju",
-    count: 1,
-    price: 10000,
-    desc: "Selain kasih sayang kita yang creamy, ada juga pisang keju ini! Rasanya yang lezat bikin kamu pengen terus mencicipi setiap gigitannya!",
-  },
+  // {
+  //   image: null,
+  //   name: "Pisang dan Keju",
+  //   count: 1,
+  //   price: 10000,
+  //   desc: "Selain kasih sayang kita yang creamy, ada juga pisang keju ini! Rasanya yang lezat bikin kamu pengen terus mencicipi setiap gigitannya!",
+  // },
 ];
 
 const Menu = () => {
   return (
-    <main className="px-[1rem] pb-[100rem]">
+    <main className="px-[1rem]">
       <TagLine teg="our menu" desc="Hidangan Spesial, Seperti Kamu" />
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
         {menus.map((menu, index) => (

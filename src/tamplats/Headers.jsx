@@ -5,8 +5,12 @@ import abstrak from "../assets/background/abstrak.svg";
 import background from "../assets/background/headerBaground.svg";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import { FaPhoneAlt } from "react-icons/fa";
+import { GlobalStateContext } from "../GlobalStateContext";
+import { useContext } from "react";
 
 const Headers = () => {
+  const { setCheckout } = useContext(GlobalStateContext);
+
   return (
     <>
       <header
@@ -34,6 +38,7 @@ const Headers = () => {
                 </p>
               </div>
               <Button
+                onClick={() => setCheckout(true)}
                 className={
                   "w-[12rem] h-[3rem] mx-auto lg:mx-0 scale-70 md:scale-100 capitalize"
                 }
@@ -62,7 +67,7 @@ const Headers = () => {
                   </div>
                   <div className="flex items-center flex-col">
                     <p className="font-semibold capitalize">phone number:</p>
-                    <p>+62 8987667887</p>
+                    <p>{import.meta.env.VITE_PHONE}</p>
                   </div>
                 </div>
                 <div className="absolute w-[37rem] bg-white bottom-0 scale-50 :p-5 rounded-3xl md:scale-75 md:bottom-16 shadow-md font-mono">

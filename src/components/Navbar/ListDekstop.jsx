@@ -1,16 +1,20 @@
 import { Link } from "react-scroll";
+import PropTypes from "prop-types";
 
-const ListDekstop = () => {
+const ListDekstop = ({
+  className = "hidden md:flex items-center justify-around",
+}) => {
   const lists = [
     { title: "home", to: "home" },
     { title: "menu", to: "menu" },
     { title: "service", to: "service" },
     { title: "about us", to: "about" },
-    { title: "contacts", to: "contacts" },
   ];
 
   return (
-    <ul className="items-center justify-around w-[23rem] lg:w-[35rem] text-black font-semibold text-md lg:text-lg capitalize hidden md:flex">
+    <ul
+      className={` w-[23rem] lg:w-[35rem] text-black font-semibold text-md lg:text-lg capitalize ${className} `}
+    >
       {lists.map((list, index) => (
         <li
           key={index}
@@ -20,6 +24,7 @@ const ListDekstop = () => {
             activeClass="text-yellow font-bold transition-all duration-500 ease-in-out delay-100 border-b"
             to={list.to}
             spy={true}
+            offset={-100}
             smooth={true}
             duration={1500}
             className="Link"
@@ -30,6 +35,10 @@ const ListDekstop = () => {
       ))}
     </ul>
   );
+};
+
+ListDekstop.propTypes = {
+  className: PropTypes.string,
 };
 
 export default ListDekstop;

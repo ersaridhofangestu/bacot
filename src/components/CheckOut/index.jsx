@@ -3,6 +3,7 @@ import { GlobalStateContext } from "../../GlobalStateContext";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Button from "../Button";
 import block from "../../assets/background/block.svg";
+// import { Link } from "react-router-dom";
 
 const methodes = [
   {
@@ -14,10 +15,36 @@ const methodes = [
 ];
 
 const CheckOut = () => {
-  const { allMenuOrders } = useContext(GlobalStateContext);
+  const { allMenuOrders, setCheckout } = useContext(GlobalStateContext);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [Methode, setMethode] = useState("");
-  const [user, setUser] = useState({ name: null, location: null, note: null });
+  const [user, setUser] = useState({
+    name: null,
+    location: null,
+    note: null,
+    method: "",
+  });
+
+  const message = `siang, min saya ingin order: \n ${allMenuOrders.map(
+    (menu) => "-" + menu.name + " " + menu.count + " " + "pcs" + `\n`,
+  )} dengan total ${Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(totalPrice)} \n\n 
+
+    Nama : ${user.name} \n 
+    Nethod : ${user.method} \n
+    lokasi : ${user.location} \n
+    Note : ${user.note} \n
+    `;
+  const encodedMessage = encodeURIComponent(message);
+  const url = `https://wa.me/${import.meta.env.VITE_PHONE}?text=${encodedMessage}`;
+
+  const handleSend = (data) => {
+    const { name, method, location, note } = data;
+    if (name && method && location && note) {
+      window.open(url, "_blank");
+    }
+  };
 
   useEffect(() => {
     const total = allMenuOrders?.map((item) => item.price) || [];
@@ -28,10 +55,8 @@ const CheckOut = () => {
     setTotalPrice(sum);
   }, [allMenuOrders]);
 
-  console.log(user);
-
   return (
-    <section className="absolute w-screen h-screen bg-white left-0 top-0 z-[100] text-black/80">
+    <section className="absolute w-screen h-screen bg-white left-0 top-0 z-[100] text-black/80 md:overflow-hidden">
       <div className="lg:grid grid-cols-3 w-full h-full">
         <div className="lg:h-full w-full col-span-2 p-10 lg:p-24 flex flex-col gap-5 overflow-y-auto">
           <h1 className="text-4xl capitalize font-semibold">shopping cart.</h1>
@@ -70,14 +95,17 @@ const CheckOut = () => {
             <button
               className="bg-white text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group border group/arrow shadow order-2 md:order-1"
               type="button"
+              onClick={() => {
+                setCheckout(false);
+              }}
             >
               <div className="bg-yellow rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
                 <FaArrowLeftLong className="w-20  group-hover/arrow:scale-x-[2.5] transition-transform duration-1000 ease-in-out" />
               </div>
-              <p className="translate-x-2 order-1">Go Back</p>
+              <p className="translate-x-2">Go Back</p>
             </button>
 
-            <p className="font-bold uppercase opacity-90">
+            <p className="font-bold uppercase opacity-90 order-1">
               total :{" "}
               {Intl.NumberFormat("id-ID", {
                 style: "currency",
@@ -103,8 +131,8 @@ const CheckOut = () => {
                 {methodes.map((via, index) => (
                   <div key={index + 1} className="w-full">
                     <button
-                      className={`rounded-full w-full py-[.6rem] border text-xl uppercase transition-colors duration-500 ease-in-out delay-200 ${Methode === via.method ? "bg-yellow text-black border-transparent" : "border-yellow text-yellow"}`}
-                      onClick={() => setMethode(via.method)}
+                      className={`rounded-full w-full py-[.6rem] border text-xl uppercase transition-colors duration-500 ease-in-out delay-200 ${user.method == via.method ? "bg-yellow text-black border-transparent" : "border-yellow text-yellow"}`}
+                      onClick={() => setUser({ ...user, method: via.method })}
                     >
                       {via.method}
                     </button>
@@ -133,7 +161,10 @@ const CheckOut = () => {
                 onChange={(e) => setUser({ ...user, note: e.target.value })}
               ></textarea>
             </div>
-            <Button className={"w-full h-14 border-2 border-yellow"}>
+            <Button
+              className={"w-full h-14 border-2 border-yellow"}
+              onClick={() => handleSend(user)}
+            >
               pesan
             </Button>
           </div>

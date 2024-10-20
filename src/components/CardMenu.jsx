@@ -105,7 +105,7 @@ const CardMenu = ({ name, price, desc, img }) => {
               <p className="border-x px-[1rem] h-full flex items-center justify-center">
                 {countOrder}
               </p>
-              {totalCountOrder > 0 && (
+              {countOrder > 0 && (
                 <button
                   className="h-full flex justify-center items-center"
                   onClick={() => {
