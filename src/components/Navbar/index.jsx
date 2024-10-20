@@ -6,6 +6,7 @@ import { useContext } from "react";
 import Hamburger from "./Hamburger";
 import "./navbar.css";
 import { GlobalStateContext } from "../../GlobalStateContext";
+import Logo from "../../assets/logo.png"
 
 const Navbar = () => {
   const { setCheckout, totalCountOrder, activeNavar, setActiveNavbar } =
@@ -17,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between border-b-2 border-yellow py-10 bg-white px-[1rem] w-screen z-50 fixed left-0 h-10">
       <div className="flex items-center">
-        <img className="w-16 md:-ml-3" src="/src/assets/logo.png" alt="Logo" />
+        <img className="w-16 md:-ml-3" src={Logo} alt="Logo" />
         <h1 className="text-4xl md:text-5xl font-bold text-yellow -ml-2">
           Bacot
         </h1>
