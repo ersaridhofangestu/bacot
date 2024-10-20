@@ -3,7 +3,6 @@ import { GlobalStateContext } from "../../GlobalStateContext";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Button from "../Button";
 import block from "../../assets/background/block.svg";
-// import { Link } from "react-router-dom";
 
 const methodes = [
   {
