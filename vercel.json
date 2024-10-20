@@ -1,5 +1,6 @@
 {
   "version": 2,
   "builds": [{ "src": "./index.html", "use": "@vercel/node" }],
-  "routers": [{ "src": "/(.*)", "dest": "/" }]
+  "routers": [{ "src": "/(.*)", "dest": "/" }],
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }

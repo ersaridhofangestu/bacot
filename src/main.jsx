@@ -14,5 +14,5 @@ createRoot(document.getElementById("root")).render(
         </Routes>
       </Router>
     </GlobalStateProvider>
-  </StrictMode>,
+  </StrictMode>
 );
