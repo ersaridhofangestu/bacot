@@ -19,7 +19,8 @@
     "react-multi-carousel": "^2.8.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.27.0",
-    "react-scroll": "^1.9.0"
+    "react-scroll": "^1.9.0",
+    "vercel": "^37.11.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
