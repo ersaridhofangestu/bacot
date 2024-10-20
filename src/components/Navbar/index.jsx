@@ -6,7 +6,7 @@ import { useContext } from "react";
 import Hamburger from "./Hamburger";
 import "./navbar.css";
 import { GlobalStateContext } from "../../GlobalStateContext";
-import Logo from "../../assets/logo.png"
+import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const { setCheckout, totalCountOrder, activeNavar, setActiveNavbar } =

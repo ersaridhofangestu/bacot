@@ -39,7 +39,7 @@ const Testimonial = () => {
         const send = await service.Created(datas);
         return send;
       } catch (error) {
-        throw new error
+        throw new error();
       }
     }
   };
@@ -97,10 +97,10 @@ const Testimonial = () => {
                       onClick={() => {
                         stars < 5 ? setStars(stars + 1) : null,
                           stars < 5 &&
-                          setDataTestimonial({
-                            ...dataTestimonial,
-                            star: dataTestimonial.star + 1,
-                          });
+                            setDataTestimonial({
+                              ...dataTestimonial,
+                              star: dataTestimonial.star + 1,
+                            });
                       }}
                     >
                       <FaPlus />
@@ -114,10 +114,10 @@ const Testimonial = () => {
                       onClick={() => {
                         stars > 1 ? setStars(stars - 1) : null,
                           stars > 1 &&
-                          setDataTestimonial({
-                            ...dataTestimonial,
-                            star: dataTestimonial.star - 1,
-                          });
+                            setDataTestimonial({
+                              ...dataTestimonial,
+                              star: dataTestimonial.star - 1,
+                            });
                       }}
                     >
                       <FaMinus />

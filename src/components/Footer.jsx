@@ -15,7 +15,7 @@ const Footer = () => {
         const send = await service.Created(datas);
         return send;
       } catch (error) {
-        throw new error
+        throw new error();
       }
     }
   };
