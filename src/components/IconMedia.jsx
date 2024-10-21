@@ -8,7 +8,7 @@ const IconMesdia = () => {
         className="social-btn flex-center justify-center flex"
       >
         <AiFillInstagram size={300} className="fill-pink-700 scale-125" />
-        <span>@_bananachocolate</span>
+        <span>@___bananachocolate</span>
       </a>
 
       <a
