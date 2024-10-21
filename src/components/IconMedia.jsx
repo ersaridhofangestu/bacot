@@ -4,7 +4,7 @@ const IconMesdia = () => {
   return (
     <div className="social-links w-full">
       <a
-        href={"https://www.instagram.com/_bananachocolate/profilecard/?igsh=aGlxanlocDU0c21n"}
+        href={"https://www.instagram.com/___bananachocolate/profilecard/?igsh=aGlxanlocDU0c21n"}
         className="social-btn flex-center justify-center flex"
       >
         <AiFillInstagram size={300} className="fill-pink-700 scale-125" />
