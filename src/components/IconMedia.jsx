@@ -4,11 +4,11 @@ const IconMesdia = () => {
   return (
     <div className="social-links w-full">
       <a
-        href={"https://www.instagram.com/_bananachocolate?igsh=OWZ1bm1kbnE3NDk5"}
+        href={"https://www.instagram.com/_bananachocolate/profilecard/?igsh=aGlxanlocDU0c21n"}
         className="social-btn flex-center justify-center flex"
       >
         <AiFillInstagram size={300} className="fill-pink-700 scale-125" />
-        <span>@__bananachcolate</span>
+        <span>@_bananachocolate</span>
       </a>
 
       <a

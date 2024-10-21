@@ -11,7 +11,7 @@ const About = () => {
           <TagLine
             className={"md:text-center"}
             teg="our application"
-            desc="banan choclate"
+            desc="banan chocolate"
           />
           <p className="-mt-5">
             Pisang coklat kami adalah perpaduan sempurna antara manisnya pisang
