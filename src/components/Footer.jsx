@@ -37,7 +37,7 @@ const Footer = () => {
             <input
               type="email"
               className="p-2 w-full border rounded-lg placeholder:capitalize text-xl px-5 focus:outline-none"
-              placeholder="Subscribe"
+              placeholder="Email"
               value={subscribe.name ? subscribe.name : ""}
               onChange={(e) =>
                 setSubscribe({ name: e.target.value, date: new Date() })
