@@ -136,7 +136,7 @@ const Testimonial = () => {
                 </div>
                 <textarea
                   rows={4}
-                  placeholder="nama"
+                  placeholder="Ulasan..."
                   className="py-2 px-5 shadow border rounded-3xl focus:outline-none placeholder:capitalize"
                   onChange={(e) =>
                     setDataTestimonial({
