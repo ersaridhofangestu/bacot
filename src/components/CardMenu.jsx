@@ -82,11 +82,11 @@ const CardMenu = ({ name, price, desc, img }) => {
                 </div>
               ))}
             </div>
-            <p className="">
+            <p>
               {Intl.NumberFormat("id-ID", {
                 style: "currency",
                 currency: "IDR",
-              }).format(price)}
+              }).format(price)}/pcs
             </p>
           </div>
           <h2 className="capitalize font-bold">{name}</h2>
