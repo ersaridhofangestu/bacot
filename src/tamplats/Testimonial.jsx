@@ -1,5 +1,5 @@
 import happy from "../assets/happy.png";
-import abstak from "../assets/background/abstrak.svg";
+import abstak from "/background/abstrak.svg";
 import TagLine from "../components/TagLine";
 import { FaUserAlt } from "react-icons/fa";
 import { MdOutlineStarPurple500 } from "react-icons/md";
@@ -39,13 +39,14 @@ const Testimonial = () => {
         const send = await service.Created(datas);
         return send;
       } catch (error) {
-        throw new error();
+        console.log("maaf data base sudah di non aktifkan jadi saya simpan datanya di state")
+        // throw new error();
       }
     }
   };
 
   return (
-    <section className="relative mx-[1rem]">
+    <section className="relative mx-[1rem] xl:mx-[5rem]">
       <TagLine
         teg="our seviews"
         desc="Ayo, ceritakan kesan serumu bareng kami!"
@@ -55,12 +56,12 @@ const Testimonial = () => {
           style={{
             backgroundImage: `url(${abstak})`,
             backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundPositionX: "-100px",
+            backgroundSize: "600px",
+            backgroundPositionX: "50%",
           }}
           className="lg:flex items-center justify-center hidden"
         >
-          <img src={happy} alt="" className="scale-x-[-1] w-[30rem] " />
+          <img src={happy} alt="monky happy" className="scale-x-[-1] w-[30rem] " />
         </div>
         <div className="col-span-2 w-full">
           <div className="w-full relative flex lg:pt-10">

@@ -20,6 +20,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.27.0",
     "react-scroll": "^1.9.0",
+    "uuid": "^11.1.0",
     "vercel": "^37.11.0"
   },
   "devDependencies": {

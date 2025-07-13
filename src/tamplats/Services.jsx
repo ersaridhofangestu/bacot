@@ -5,10 +5,10 @@ import TagLine from "../components/TagLine";
 
 const Services = () => {
   return (
-    <section className="w-full px-[1rem]">
+    <section className="w-full px-[1rem] lg:px-[5rem]">
       <TagLine teg="our services" desc="bagaimana cara kerjanya?" />
       <div className="flex flex-col lg:grid grid-cols-3">
-        <div className="flex flex-col md:flex-row md:items-center justify-between lg:justify-start w-full lg:flex-col text-center lg:mx-auto lg:w-96 scale-90">
+        <div className="flex flex-col md:flex-row items-center justify-between lg:justify-start w-full lg:flex-col text-center lg:mx-auto lg:w-96 scale-90">
           <img src={order} alt="" className="w-96 object-cover" />
           <div className="flex flex-col -mt-10">
             <p className="font-semibold text-2xl md:text-5xl lg:text-3xl capitalize md:font-bold">
@@ -19,7 +19,7 @@ const Services = () => {
             </small>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center justify-between lg:justify-start w-full lg:flex-col text-center lg:mx-auto lg:w-96 scale-90">
+        <div className="flex flex-col md:flex-row items-center justify-between lg:justify-start w-full lg:flex-col text-center lg:mx-auto lg:w-96 scale-90">
           <img
             src={send}
             alt=""
@@ -35,7 +35,7 @@ const Services = () => {
             </small>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center justify-between lg:justify-start w-full lg:flex-col text-center lg:mx-auto lg:w-96 scale-90">
+        <div className="flex flex-col md:flex-row items-center justify-between lg:justify-start w-full lg:flex-col text-center lg:mx-auto lg:w-96 scale-90">
           <img src={eat} alt="" className="w-96 object-cover" />
           <div className="flex flex-col -mt-10">
             <p className="font-semibold text-2xl md:text-5xl lg:text-3xl capitalize md:font-bold">

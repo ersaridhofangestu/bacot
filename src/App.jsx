@@ -10,13 +10,18 @@ import Headers from "./tamplats/Headers";
 import Services from "./tamplats/Services";
 import Menu from "./tamplats/Menu";
 import { GlobalStateContext } from "./GlobalStateContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Testimonial from "./tamplats/Testimonial";
 import About from "./tamplats/About";
 import Footer from "./components/Footer";
 
 const App = () => {
   const { checkout } = useContext(GlobalStateContext);
+
+  useEffect(() => {
+    
+  },[])
+  
   return (
     <>
       {checkout ? (

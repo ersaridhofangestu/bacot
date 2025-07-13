@@ -16,7 +16,7 @@ const Navbar = () => {
   const handleCloseMenu = () => setActiveNavbar(false);
 
   return (
-    <nav className="flex justify-between border-b-2 border-yellow py-10 bg-white px-[1rem] w-screen z-50 fixed left-0 h-10">
+    <nav className="flex justify-between border-b-2 border-yellow py-10 bg-white px-[1rem] lg:px-[5rem] w-screen z-50 fixed left-0 h-10">
       <div className="flex items-center">
         <img className="w-16 md:-ml-3" src={Logo} alt="Logo" />
         <h1 className="text-4xl md:text-5xl font-bold text-yellow -ml-2">
@@ -26,7 +26,7 @@ const Navbar = () => {
 
       <ListDekstop />
 
-      <div className="flex items-center justify-between gap-2 md:gap-5">
+      <div className="flex items-center justify-between gap-2 lg:gap-5">
         <div className="relative">
           <BiShoppingBag className="size-9" />
           {totalCountOrder > 0 && (

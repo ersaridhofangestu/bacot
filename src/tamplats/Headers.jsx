@@ -1,8 +1,8 @@
 import Button from "../components/Button";
 import IconMedia from "../components/IconMedia";
 import image from "../assets/hay.png";
-import abstrak from "../assets/background/abstrak.svg";
-import background from "../assets/background/headerBaground.svg";
+import abstrak from "/background/abstrak.svg";
+import background from "/background/headerBaground.svg";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import { FaPhoneAlt } from "react-icons/fa";
 import { GlobalStateContext } from "../GlobalStateContext";
@@ -21,18 +21,18 @@ const Headers = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="px-[1rem]">
-          <div className="grid w-full h-[100vh] lg:grid-cols-2 pt-20 lg:pt-0 ">
-            <div className="flex items-start justify-center flex-col gap-10 order-2 lg:order-1">
+        <div className="px-[1rem] lg:px-[5rem]">
+          <div className="grid w-full h-[100vh] lg:grid-cols-2 xl:grid-cols-3 pt-20 lg:pt-0 ">
+            <div className="flex items-start justify-center xl:col-span-2 flex-col gap-10 order-2 lg:order-1">
               <div className="flex flex-col gap-5">
-                <h2 className="w-[15rem] text-2xl md:text-5xl text-center lg:text-start lg:text-7xl font-semibold md:w-[28rem] lg:w-full mx-auto lg:mx-0">
+                <h2 className="w-[15rem] text-2xl md:text-5xl text-center lg:text-start lg:text-6xl font-semibold md:w-[28rem] lg:w-full mx-auto lg:mx-0 xl:text-8xl">
                   Temukan Senyum di Setiap{" "}
                   <span className="text-transparent text-stroke-2">
                     Gigitan
                   </span>
                   .
                 </h2>
-                <p className="md:w-[70%] text-center lg:text-start text-xs md:mx-auto lg:mx-0">
+                <p className="md:w-[70%] text-center lg:text-start text-xs md:mx-auto lg:mx-0 xl:text-xl">
                   Nikmati Kejutan Manis di Setiap Gigitan, Temukan Kebahagiaan
                   yang Menggoda dan Cerita Baru dalam Setiap Momen Spesial Anda.
                 </p>
@@ -67,7 +67,7 @@ const Headers = () => {
                   </div>
                   <div className="flex items-center flex-col">
                     <p className="font-semibold capitalize">phone number:</p>
-                    <p>{import.meta.env.VITE_PHONE}</p>
+                    <p>{import.meta.env.VITE_PHONE || "08966*******"} </p>
                   </div>
                 </div>
                 <div className="absolute w-[37rem] bg-white bottom-0 scale-50 :p-5 rounded-3xl md:scale-75 md:bottom-16 shadow-md font-mono">

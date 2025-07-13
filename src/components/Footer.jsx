@@ -20,7 +20,7 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="px-[1rem] pt-20 bg-vanila">
+    <footer className="px-[1rem] lg:px-[5rem] pt-20 bg-vanila">
       <div className="md:flex justify-between items-start border-b-2 border-black pb-10">
         <div>
           <div className="flex items-center justify-start mb-4">
@@ -55,7 +55,8 @@ const Footer = () => {
         </div>
       </div>
       <p className="flex items-center gap-2 py-3 justify-center text-center md:text-start">
-        ©2024 Pisang Coklat Store. All Rights Reserved.
+        ©2024 Pisang Coklat Store by <a className="font-semibold
+         capitalize" href="https://ersaridhofangestu.netlify.app/">ersa ridho fangestu</a>. All Rights Reserved.
       </p>
     </footer>
   );

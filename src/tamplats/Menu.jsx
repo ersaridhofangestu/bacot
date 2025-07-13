@@ -48,9 +48,9 @@ const menus = [
 
 const Menu = () => {
   return (
-    <main className="px-[1rem]">
+    <main className="px-[1rem] xl:px-[5rem]">
       <TagLine teg="our menu" desc="Hidangan Spesial, Seperti Kamu" />
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {menus.map((menu, index) => (
           <div key={index + 1}>
             <CardMenu
