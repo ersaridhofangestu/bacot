@@ -26,27 +26,6 @@ Proyek ini dibangun dengan teknologi modern untuk pengembangan web.
 
 ---
 
-### ⌨️ Cara Instalasi dan Menjalankan Proyek
-*(Silakan isi bagian ini dengan langkah-langkah yang diperlukan, misalnya:)*
-1.  **Clone repositori ini:**
-    ```bash
-    git clone [https://github.com/ersaridhofangestu/bacot.git](https://github.com/ersaridhofangestu/bacot.git)
-    ```
-2.  **Masuk ke direktori proyek:**
-    ```bash
-    cd bacot
-    ```
-3.  **Instal dependensi:**
-    ```bash
-    npm install
-    ```
-4.  **Jalankan proyek di mode *development*:**
-    ```bash
-    npm run dev
-    ```
-
----
-
 ### Deployment
 Proyek ini sudah di-*deploy* dan dapat diakses secara publik melalui URL berikut:
 [https://bacot-gilt.vercel.app](https://bacot-gilt.vercel.app)
@@ -61,3 +40,4 @@ Kami menyambut kontribusi dari siapa pun! Jika Anda tertarik, silakan buat *pull
 ### Lisensi
 **© 2025 Bacot (Banana Chocolate). All Rights Reserved.**
 Semua hak cipta atas desain, logo, dan konten visual dalam proyek ini sepenuhnya dilindungi. Penggunaan, penyalinan, atau modifikasi tidak diizinkan tanpa izin tertulis dari pemilik hak cipta.
+
