@@ -28,7 +28,7 @@ Proyek ini dibangun dengan teknologi modern untuk pengembangan web.
 
 ### Deployment
 Proyek ini sudah di-*deploy* dan dapat diakses secara publik melalui URL berikut:
-[https://bacot-gilt.vercel.app](https://bacot-gilt.vercel.app)
+[https://bacot-gilt.vercel.app]
 
 ---
 
@@ -40,4 +40,5 @@ Kami menyambut kontribusi dari siapa pun! Jika Anda tertarik, silakan buat *pull
 ### Lisensi
 **© 2025 Bacot (Banana Chocolate). All Rights Reserved.**
 Semua hak cipta atas desain, logo, dan konten visual dalam proyek ini sepenuhnya dilindungi. Penggunaan, penyalinan, atau modifikasi tidak diizinkan tanpa izin tertulis dari pemilik hak cipta.
+
 
