@@ -1,6 +1,6 @@
 import { AiFillInstagram } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa6";
-const IconMesdia = () => {
+export default function IconMesdia () {
   return (
     <div className="social-links w-full">
       <a
@@ -21,5 +21,3 @@ const IconMesdia = () => {
     </div>
   );
 };
-
-export default IconMesdia;

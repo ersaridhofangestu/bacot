@@ -1,38 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalStateContext } from "../../GlobalStateContext";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import Button from "../Button";
+import { Button } from "@Components";
 import block from "/background/block.svg";
 
-const methodes = [
-  {
-    method: "cod",
-  },
-  {
-    method: "ovo",
-  },
-];
-
-const CheckOut = () => {
+export default  function  CheckOut() {
   const { allMenuOrders, setCheckout } = useContext(GlobalStateContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [user, setUser] = useState({
-    name: null,
-    location: null,
-    note: null,
+    name: "",
+    location: "",
+    note: "",
     method: "",
   });
 
-  const message = `siang, min saya ingin order: \n ${allMenuOrders.map(
+  const message = `Siang, min saya ingin order: \n ${allMenuOrders.map(
     (menu) => "-" + menu.name + " " + menu.count + " " + "pcs" + `\n`,
   )} dengan total ${Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
   }).format(totalPrice)} \n\n 
 
-    Nama : ${user.name} \n 
-    Nethod : ${user.method} \n
-    lokasi : ${user.location} \n
+    Name : ${user.name} \n 
+    Method : ${user.method} \n
+    Location : ${user.location} \n
     Note : ${user.note} \n
     `;
   const encodedMessage = encodeURIComponent(message);
@@ -60,8 +51,8 @@ const CheckOut = () => {
         <div className="lg:h-full w-full col-span-2 p-10 lg:p-24 flex flex-col gap-5 overflow-y-auto">
           <h1 className="text-4xl capitalize font-semibold">shopping cart.</h1>
           <div className="md:flex justify-between border-b-2 pb-2 hidden">
-            <p className="font-bold capitalize text-lg">pruducts</p>
-            <p className="font-bold capitalize text-lg">quntity</p>
+            <p className="font-bold capitalize text-lg">Product</p>
+            <p className="font-bold capitalize text-lg">QTY</p>
             <p className="font-bold capitalize text-lg">total price</p>
           </div>
           <div className="border-b-2">
@@ -124,16 +115,16 @@ const CheckOut = () => {
           <div className="flex flex-col gap-20 lg:gap-10 mt-10">
             <div>
               <p className="text-center mb-10 text-lg capitalize font-semibold">
-                metode pembayaran
+                method payment
               </p>
               <div className="grid grid-cols-2 gap-5 w-full">
-                {methodes.map((via, index) => (
+                {["cod","ovo"].map((via, index) => (
                   <div key={index + 1} className="w-full">
                     <button
-                      className={`rounded-full w-full py-[.6rem] border text-xl uppercase transition-colors duration-500 ease-in-out delay-200 ${user.method == via.method ? "bg-yellow text-black border-transparent" : "border-yellow text-yellow"}`}
-                      onClick={() => setUser({ ...user, method: via.method })}
+                      className={`rounded-full w-full py-[.6rem] border text-xl uppercase transition-colors duration-500 ease-in-out delay-200 ${user.method && user.method === via.method ? "bg-yellow text-black border-transparent" : "border-yellow text-yellow"}`}
+                      onClick={() => setUser({ ...user, method: via })}
                     >
-                      {via.method}
+                      {via}
                     </button>
                   </div>
                 ))}
@@ -148,13 +139,11 @@ const CheckOut = () => {
                 onChange={(e) => setUser({ ...user, name: e.target.value })}
               />
               <textarea
-                type="text"
                 className="p-2 w-full border-b placeholder:capitalize text-xl px-5 focus:outline-none"
                 placeholder="locasi"
                 onChange={(e) => setUser({ ...user, location: e.target.value })}
               ></textarea>
               <textarea
-                type="text"
                 className="p-2 w-full border-b placeholder:capitalize text-xl px-5 focus:outline-none"
                 placeholder="catatan"
                 onChange={(e) => setUser({ ...user, note: e.target.value })}
@@ -164,7 +153,7 @@ const CheckOut = () => {
               className={"w-full h-14 border-2 border-yellow"}
               onClick={() => handleSend(user)}
             >
-              pesan
+              Order Now
             </Button>
           </div>
         </div>
@@ -172,5 +161,3 @@ const CheckOut = () => {
     </section>
   );
 };
-
-export default CheckOut;

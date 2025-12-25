@@ -1,18 +1,8 @@
-import PropTypes from "prop-types";
-import Button from "../Button";
-// icons
-import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
-import { MdOutlineRestaurantMenu } from "react-icons/md";
-import { BsTools } from "react-icons/bs";
+import { Button } from "@Components";
 import { Link } from "react-scroll";
 
-const ListMonbile = ({ active, func, setActive }) => {
-  const lists = [
-    { icon: <AiOutlineHome size={26} />, title: "home", to: "home" },
-    { icon: <MdOutlineRestaurantMenu size={26} />, title: "menu", to: "menu" },
-    { icon: <BsTools size={26} />, title: "service", to: "service" },
-    { icon: <AiOutlineInfoCircle size={26} />, title: "about us", to: "about" },
-  ];
+export default  function OpstionMobile({ active, func, setActive, opstion }) {
+
   return (
     <div
       className={`md:hidden absolute w-full bottom-0 h-screen top-[5.1rem] right-0 left-0 p-0 ${active ? "translate-x-0" : "translate-x-[100%] duration-1000"} transition-transform ease-in-out`}
@@ -28,7 +18,7 @@ const ListMonbile = ({ active, func, setActive }) => {
       >
         <div className="flex flex-col items-center h-full w-full p-5 py-10 gap-5">
           <ul className="flex flex-col w-36 gap-5 font-semibold">
-            {lists?.map((list, index) => (
+            {opstion?.map((list, index) => (
               <Link
                 key={index}
                 activeClass="text-yellow font-bold transition-all duration-500 ease-in-out delay-100 border-b"
@@ -59,10 +49,3 @@ const ListMonbile = ({ active, func, setActive }) => {
   );
 };
 
-ListMonbile.propTypes = {
-  active: PropTypes.bool.isRequired,
-  func: PropTypes.func,
-  setActive: PropTypes.func,
-};
-
-export default ListMonbile;

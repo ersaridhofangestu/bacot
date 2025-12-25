@@ -7,43 +7,44 @@ export class FirebaseService {
     this.subscribe = collection(myStore, "subscribe");
   }
 
-  async FetchDataTetimonial() {
+  async FetchDataTestimonial() {
     try {
-      const querySnapshot = await getDocs(this.testimonial);
-      const data = querySnapshot?.docs.map((doc) => ({
+      const snapshot = await getDocs(this.testimonial);
+      return await snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
-      return data;
-    } catch (error) {
-      throw new error();
-    }
-  }
-  async FetchDataSubscribe() {
-    try {
-      const querySnapshot = await getDocs(this.subscribe);
-      const data = querySnapshot?.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      return data;
+
     } catch (error) {
       throw new error();
     }
   }
 
-  async Created(datas) {
+  async FetchDataSubscribe() {
     try {
-      const docRef = await addDoc(this.testimonial, datas);
+      const snapshot = await getDocs(this.subscribe)
+      return await snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+
+    } catch (error) {
+      throw new error();
+    }
+  }
+
+  async Created(data) {
+    try {
+      const docRef = await addDoc(this.testimonial, data);
       return docRef.id;
     } catch (error) {
       throw new error();
     }
   }
 
-  async Subscribe(datas) {
+  async Subscribe(data) {
     try {
-      const docRef = await addDoc(this.subscribe, datas);
+      const docRef = await addDoc(this.subscribe, data);
       return docRef.id;
     } catch (error) {
       throw new error();

@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
 import { GlobalStateContext } from "../GlobalStateContext";
-import PropTypes from "prop-types";
 
-// icons
+
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
-const CardMenu = ({ name, price, desc, img }) => {
+export default function CardMenu({ name, price, desc, img }) {
   const [countOrder, setCountOrder] = useState(0);
   const {
     setAllMenuOrders,
@@ -34,12 +33,14 @@ const CardMenu = ({ name, price, desc, img }) => {
         ),
       );
       setCountOrder(countOrder + 1);
+      setTotalCountOrder(totalCountOrder + 1)
     } else {
       setAllMenuOrders([
         ...allMenuOrders,
         { name: nameItem, count: 1, price: price },
       ]);
       setCountOrder(countOrder + 1);
+      setTotalCountOrder(totalCountOrder + 1)
     }
   };
 
@@ -58,13 +59,17 @@ const CardMenu = ({ name, price, desc, img }) => {
           ),
         );
         setCountOrder(countOrder - 1);
+        setTotalCountOrder(totalCountOrder - 1)
       } else {
         setAllMenuOrders(
           allMenuOrders.filter((item) => item.name !== nameItem),
         );
         setCountOrder(countOrder - 1);
+        setTotalCountOrder(totalCountOrder - 1)
       }
     }
+
+
   };
 
   return (
@@ -95,10 +100,7 @@ const CardMenu = ({ name, price, desc, img }) => {
             <div className="grid  grid-cols-3 items-center border w-[10rem] h-[2rem] rounded-full overflow-hidden shadow">
               <button
                 className="h-full flex justify-center items-center"
-                onClick={() => {
-                  handleAddOrder(name, price, img),
-                    setTotalCountOrder(totalCountOrder + 1);
-                }}
+                onClick={() => handleAddOrder(name, price, img)}
               >
                 <FaPlus />
               </button>
@@ -108,10 +110,7 @@ const CardMenu = ({ name, price, desc, img }) => {
               {countOrder > 0 && (
                 <button
                   className="h-full flex justify-center items-center"
-                  onClick={() => {
-                    handleDeletedOrder(name, price),
-                      setTotalCountOrder(totalCountOrder - 1);
-                  }}
+                  onClick={() => handleDeletedOrder(name, price)}
                 >
                   <FaMinus />
                 </button>
@@ -130,12 +129,3 @@ const CardMenu = ({ name, price, desc, img }) => {
     </div>
   );
 };
-
-CardMenu.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  desc: PropTypes.string.isRequired,
-  img: PropTypes.string,
-};
-
-export default CardMenu;

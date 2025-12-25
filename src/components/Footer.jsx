@@ -1,19 +1,23 @@
 import Logo from "../assets/logo.png";
-import ListDekstop from "../components/Navbar/ListDekstop";
-import Button from "../components/Button";
+import ListDekstop from "./Navbar/OpstionDekstop.jsx";
+import { Button } from "@Components";
 import { useState } from "react";
 import { FirebaseService } from "../database/services.js";
 
-const Footer = () => {
-  const [subscribe, setSubscribe] = useState("");
+export default function Footer(){
+  const [subscribe, setSubscribe] = useState({});
   const service = new FirebaseService();
   const handleSend = async (datas) => {
-    const { name } = datas;
-
+    const { name } = await datas;
     if (name) {
       try {
         const send = await service.Created(datas);
-        return send;
+        if (send) {
+          setSubscribe("")
+          return send
+        }else{
+          return null
+        }
       } catch (error) {
         throw new error();
       }
@@ -24,7 +28,7 @@ const Footer = () => {
       <div className="md:flex justify-between items-start border-b-2 border-black pb-10">
         <div>
           <div className="flex items-center justify-start mb-4">
-            <img src={Logo} alt="logo" className="w-20" />
+            <img src={Logo || ""} alt="logo" className="w-20" />
             <h1 className="font-extrabold capitalize text-5xl">bacot</h1>
           </div>
           <ListDekstop className="text-black/50 flex gap-5 flex-wrap" />
@@ -44,9 +48,7 @@ const Footer = () => {
               }
             />
             <Button
-              onClick={() => {
-                handleSend(subscribe), setSubscribe("");
-              }}
+              onClick={() => handleSend(subscribe)}
               className={"w-full md:w-[16rem] h-10"}
             >
               Subscribe
@@ -61,5 +63,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

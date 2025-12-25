@@ -1,6 +1,4 @@
-import PropTypes from "prop-types";
-
-const Hamburger = ({ func, value }) => {
+export default function Hamburger({ func, value }) {
   return (
     <label className="hamburger md:hidden relative bottom-0">
       <input
@@ -18,10 +16,3 @@ const Hamburger = ({ func, value }) => {
     </label>
   );
 };
-
-Hamburger.propTypes = {
-  func: PropTypes.func.isRequired,
-  value: PropTypes.bool.isRequired,
-};
-
-export default Hamburger;
