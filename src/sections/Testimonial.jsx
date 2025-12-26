@@ -1,6 +1,6 @@
-import happy from "../assets/happy.png";
-import abstak from "/background/abstrak.svg";
-import TagLine from "../components/TagLine";
+import {happy} from "@Assets";
+import abstrak from "/background/abstrak.svg";
+import {TegLine, Button} from "@Components";
 import { FaUserAlt } from "react-icons/fa";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
@@ -9,14 +9,14 @@ import { Carousel } from "react-responsive-carousel";
 import { FirebaseService } from "../database/services.js";
 import { useEffect, useMemo, useState } from "react";
 import { FaPlus, FaMinus, FaArrowLeftLong } from "react-icons/fa6";
-import Button from "../components/Button";
 
-const Testimonial = () => {
-  const [datas, setDatas] = useState(null);
+
+const Testimonial =  () => {
+  const [datas, setDatas] = useState([]);
   const [stars, setStars] = useState(1);
   const [creataTestimonial, setCreateTestimonial] = useState(false);
   const [dataTestimonial, setDataTestimonial] = useState({
-    name: null,
+    name: "",
     star: 1,
     desc: "",
   });
@@ -24,20 +24,30 @@ const Testimonial = () => {
   const service = useMemo(() => new FirebaseService(), []);
 
   useEffect(() => {
-    const fetchTestimonials = async () => {
-      const testimonials = await service.FetchDataTetimonial();
-      setDatas(testimonials);
-    };
     fetchTestimonials();
   }, [service]);
 
-  const handleSend = async (datas) => {
-    const { name, star, desc } = datas;
+  const fetchTestimonials = async () => {
+    try {
+      const testimonials = await service.FetchDataTestimonial();
+      setDatas(testimonials);
+    }catch (error) {
+      console.log((error))
+    }
+  };
+  const handleSend = async (data) => {
+    const { name, star, desc } = data;
 
     if (name && star && desc) {
       try {
-        const send = await service.Created(datas);
-        return send;
+        console.log("maaf data base sudah di non aktifkan jadi saya simpan datanya di state")
+        // const postData = await service.Created(datas);
+        setTimeout(() => {
+          setCreateTestimonial(false);
+        }, [3000]);
+        // console.log(postData)
+        // return postData
+        setDatas([...datas, data])
       } catch (error) {
         console.log("maaf data base sudah di non aktifkan jadi saya simpan datanya di state")
         // throw new error();
@@ -45,23 +55,44 @@ const Testimonial = () => {
     }
   };
 
+  const giveStars = (type) => {
+    if(type === "increment"){
+      if(stars < 5) {
+        setStars(stars + 1)
+        setDataTestimonial({
+          ...dataTestimonial,
+          star: dataTestimonial.star + 1,
+        });
+      }
+    }
+    if(type === "decrement"){
+      if (stars > 1) {
+        setStars(stars - 1)
+        setDataTestimonial({
+        ...dataTestimonial,
+        star: dataTestimonial.star - 1,
+        });
+      }
+    }
+  }
+
   return (
     <section className="relative mx-[1rem] xl:mx-[5rem]">
-      <TagLine
+      <TegLine
         teg="our seviews"
         desc="Ayo, ceritakan kesan serumu bareng kami!"
       />
       <div className="lg:grid grid-cols-3 gap-10 md:py-10">
         <div
           style={{
-            backgroundImage: `url(${abstak})`,
+            backgroundImage: `url(${abstrak})`,
             backgroundPosition: "center",
             backgroundSize: "600px",
             backgroundPositionX: "50%",
           }}
           className="lg:flex items-center justify-center hidden"
         >
-          <img src={happy} alt="monky happy" className="scale-x-[-1] w-[30rem] " />
+          <img src={happy || ""} alt="monky happy" className="scale-x-[-1] w-[30rem] " />
         </div>
         <div className="col-span-2 w-full">
           <div className="w-full relative flex lg:pt-10">
@@ -84,44 +115,32 @@ const Testimonial = () => {
                   type="text"
                   placeholder="nama"
                   className="py-2 px-5 shadow border rounded-3xl focus:outline-none placeholder:capitalize"
-                  onChange={(e) =>
-                    setDataTestimonial({
-                      ...dataTestimonial,
-                      name: e.target.value,
-                    })
-                  }
+                  onChange={(e) => setDataTestimonial({...dataTestimonial, name: e.target.value,})}
                 />
                 <div className="flex items-center gap-5">
                   <div className="grid  grid-cols-3 items-center border w-[10rem] h-[2rem] rounded-full overflow-hidden shadow">
-                    <button
-                      className="h-full flex justify-center items-center"
-                      onClick={() => {
-                        stars < 5 ? setStars(stars + 1) : null,
-                          stars < 5 &&
-                            setDataTestimonial({
-                              ...dataTestimonial,
-                              star: dataTestimonial.star + 1,
-                            });
-                      }}
-                    >
-                      <FaPlus />
-                    </button>
+
+                      <button
+                          disabled={stars >=5 ? true : false}
+                        className="h-full flex justify-center items-center"
+                        onClick={() => giveStars("increment")}
+                      >
+                        {stars < 5 && (
+                        <FaPlus />
+                        )}
+                      </button>
 
                     <p className="border-x px-[1rem] h-full flex items-center justify-center">
                       {stars}
                     </p>
                     <button
+                        disabled={stars <= 1 ? true : false}
                       className="h-full flex justify-center items-center"
-                      onClick={() => {
-                        stars > 1 ? setStars(stars - 1) : null,
-                          stars > 1 &&
-                            setDataTestimonial({
-                              ...dataTestimonial,
-                              star: dataTestimonial.star - 1,
-                            });
-                      }}
+                      onClick={() => giveStars("decrement")}
                     >
-                      <FaMinus />
+                      {stars > 1 && (
+                          <FaMinus />
+                      )}
                     </button>
                   </div>
                   <div className="flex items-center">
@@ -148,12 +167,7 @@ const Testimonial = () => {
                 ></textarea>
                 <Button
                   className={"capitalize"}
-                  onClick={() => {
-                    handleSend(dataTestimonial),
-                      setTimeout(() => {
-                        setCreateTestimonial(false);
-                      }, [3000]);
-                  }}
+                  onClick={() => handleSend(dataTestimonial)}
                 >
                   send
                 </Button>

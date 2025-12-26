@@ -87,7 +87,7 @@ export default function CardMenu({ name, price, desc, img }) {
                 </div>
               ))}
             </div>
-            <p>
+            <p className={"text-md"}>
               {Intl.NumberFormat("id-ID", {
                 style: "currency",
                 currency: "IDR",
@@ -96,7 +96,7 @@ export default function CardMenu({ name, price, desc, img }) {
           </div>
           <h2 className="capitalize font-bold">{name}</h2>
           <small className="px-3 font-mono text-sm">{desc}</small>
-          <div className="flex justify-between mt-10">
+          <div className="flex flex-col mt-10 gap-3 2xl:flex-row 2xl:justify-between">
             <div className="grid  grid-cols-3 items-center border w-[10rem] h-[2rem] rounded-full overflow-hidden shadow">
               <button
                 className="h-full flex justify-center items-center"
@@ -116,7 +116,7 @@ export default function CardMenu({ name, price, desc, img }) {
                 </button>
               )}
             </div>
-            <p>
+            <p className={"text-end"}>
               Total :{" "}
               {Intl.NumberFormat("id-ID", {
                 style: "currency",

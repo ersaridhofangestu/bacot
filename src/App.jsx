@@ -1,21 +1,12 @@
-// libs
 import { Element } from "react-scroll";
 
-// components
-import Navbar from "./components/Navbar";
-import CheckOut from "./components/CheckOut";
+import {Navbar, CheckOut, Footer} from "@Components"
+import {Menu,Headers,Services,About,Testimonial} from "@Sections"
 
-// template
-import Headers from "./tamplats/Headers";
-import Services from "./tamplats/Services";
-import Menu from "./tamplats/Menu";
 import { GlobalStateContext } from "./GlobalStateContext";
 import { useContext, useEffect } from "react";
-import Testimonial from "./tamplats/Testimonial";
-import About from "./tamplats/About";
-import Footer from "./components/Footer";
 
-const App = () => {
+export default function App() {
   const { checkout } = useContext(GlobalStateContext);
 
   useEffect(() => {
@@ -40,7 +31,7 @@ const App = () => {
           <Element name="menu">
             <Menu />
           </Element>
-          <Element name="">
+          <Element name="testimonial">
             <Testimonial />
           </Element>
           <Element name="about">
@@ -52,5 +43,3 @@ const App = () => {
     </>
   );
 };
-
-export default App;
